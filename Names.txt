@@ -1,0 +1,97 @@
+Загальні правила побудови імен для змінних (унікальних ідентифікаторів) такі:
+
+
+
+Імена можуть містити літери, цифри, підкреслення та знаки долара.
+Імена мають починатися з літери
+Імена також можуть починатися з $ та _
+Імена чутливі до регістру (y та Y — це різні змінні)
+Зарезервовані слова (наприклад, ключові слова JavaScript) не можна використовувати як імена
+
+
+Ім'я змінної повинно бути зрозумілим.
+
+
+
+# ❌ Погано
+
+
+
+chislo
+
+
+
+korzina_tovarov
+
+
+
+profil_polzovatelya
+
+
+
+tekushiy_mesyaz
+
+
+
+# ✅ Добре
+
+
+
+number
+
+
+
+cart
+
+
+
+userProfile
+
+
+
+currentMonth
+
+
+
+Використання camelCase-нотації для ідентифікаторів — це стандарт. Перше слово пишеться малими літерами, а кожне наступне починається з великої. Наприклад, user, greetUser, getUserData, isActive, activeGuestCount, totalWorkerSalary.
+
+
+
+Ключові слова​
+
+
+
+Існує список зарезервованих ключових слів, які мають спеціальне значення і використовуються для певних конструкцій. Забороняється використовувати ключові слова у якості ідентифікаторів.
+
+
+
+abstract	arguments	await	boolean
+break	byte	case	catch
+char	class	const	continue
+debugger	default	delete	do
+double	else	enum	eval
+export	extends	false	final
+finally	float	for	function
+goto	if	implements	import
+in	instanceof	int	interface
+let	long	native	new
+null	package	private	protected
+public	return	short	static
+super	switch	synchronized	this
+throw	throws	transient	true
+try	typeof	var	void
+volatile	while	with	yield
+
+// Константа, що зберігає значення кольору
+
+
+
+const COLOR_TEAL = "#009688";
+
+
+
+// Константа, що зберігає повідомлення про результат логіну
+
+
+
+const LOGIN_SUCCESS_MESSAGE = "Ласкаво просимо!";
