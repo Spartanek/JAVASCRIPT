@@ -37,7 +37,7 @@ if (agreeConfirmation === true) {
 // 9 завдання
 alert("Йой, попереджаємо про небезпеку на сайті");
 const agreeDanger = confirm("Підтвердіть небезпеку!");
-if (agreeConfirmation === true) {
+if (agreeDanger === true) {
   alert("Дякую за підтвердження!");
 } else {
   alert("Дію відмінено!");
