@@ -60,6 +60,7 @@ if (numberDays <= 31 && numberDays >= 28) {
 //     "очок енергії"
 // );
 // функція для рандомних чисел
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -155,7 +156,8 @@ const sqrtMessageNumber = prompt("Впиши число, щоб знайти к�
 const sqrtProcessNumber = Math.sqrt(sqrtMessageNumber);
 console.log("Корінь твого числа це" + " " + sqrtProcessNumber);
 // 9-e завдання
+const ryadok = prompt("введи  значення");
 const cilochusel = prompt("введи цілочисельне значення");
-const ryadok = toString(prompt("введи  значення"));
+
 console.log(parseInt(ryadok));
-console.log(toString(cilochusel));
+console.log(cilochusel.toString());
