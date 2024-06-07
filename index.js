@@ -28,4 +28,4 @@ console.log(matesha);
 alert(matesha);
 // 4-е завдання
 const userName = prompt("Впишіть своє ім'я");
-const payment = 3;
+const payment = Math.floor(Math.random() * (10 - 1) + 1); // 20 max 10 - min;
