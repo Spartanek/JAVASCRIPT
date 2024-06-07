@@ -1,0 +1,5 @@
+elem.classList.contains(cls) — повертає true або false, в залежності від того, чи є в елемента клас cls
+elem.classList.add(cls) — додає клас cls в список класів елемента
+elem.classList.remove(cls) — видаляє клас cls зі списку класів елемента
+elem.classList.replace(oldClass, newClass) — замінює існуючий клас на зазначений
+elem.classList.toggle(cls) — якщо класу cls немає, додає його, якщо є, видаляє
