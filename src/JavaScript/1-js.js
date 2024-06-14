@@ -1,1 +1,2 @@
-const startButton = document.querySelector("button-start");
+const startButton = document.querySelector(".button-start");
+console.log(startButton);
