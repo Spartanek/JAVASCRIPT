@@ -1,0 +1,27 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: crimson;
+}
+.header-link {
+  color: white;
+}
+.ul-list {
+  display: flex;
+  justify-content: center;
+}
+.li-item:not(:last-child) {
+  margin-right: 20px;
+}

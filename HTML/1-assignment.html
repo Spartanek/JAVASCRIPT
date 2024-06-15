@@ -3,36 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/1-scss.css" />
+    <link rel="stylesheet" href="../css/main.css" />
     <title>Document</title>
   </head>
   <body>
+    <header>
+      <nav>
+        <ul class="ul-list">
+          <li class="li-item">
+            <a class="header-link" href="./1-assignment.html"
+              >Перше завданнячко</a
+            >
+          </li>
+          <li class="li-item">
+            <a class="header-link" href="./2-assignment.html"
+              >Друге завданнячко</a
+            >
+          </li>
+          <li class="li-item">
+            <a class="header-link" href="./3-assignment.html"
+              >Третє завданнячко</a
+            >
+          </li>
+          <li class="li-item">
+            <a class="header-link" href="./4-assignment.html"
+              >Четверте завданнячко</a
+            >
+          </li>
+          <li class="li-item">
+            <a class="header-link" href="./5-assignment.html"
+              >П'яте завданнячко</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
     <main>
-      <button class="button-start" data-action="open-modal">
+      <button class="button button-open" data-action="open-modal">
         Відкрити модалку
       </button>
+
       <div class="backdrop js-backdrop">
         <div class="modal">
           <h2>Modal window</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-            suscipit molestias natus in tempore a veniam ullam? Aliquid cumque
-            velit reiciendis ab molestiae natus ducimus amet facere, laudantium
-            sunt corrupti. Enim libero animi quae doloremque rem doloribus
-            suscipit exercitationem fugiat ea maiores aliquam natus quibusdam
-            iste sint hic aperiam accusamus modi obcaecati, alias repudiandae.
-            Odio maiores soluta quisquam ipsum. Provident? Commodi architecto
-            voluptate ipsa incidunt repellendus, minus cumque inventore esse
-            praesentium quos, temporibus iure quas sequi veniam numquam
-            consectetur repellat. Similique quos nisi reprehenderit. Nesciunt
-            suscipit veritatis cumque iure animi?
+            In user interface design for computer applications, a modal window
+            is a graphical control element subordinate to an application's main
+            window. It creates a mode that disables the main window but keeps it
+            visible, with the modal window as a child window in front of it.
+            Users must interact with the modal window before they can return to
+            the parent application. This avoids interrupting the workflow on the
+            main window. Modal windows are sometimes called heavy windows or
+            modal dialogs because they often display a dialog box.
           </p>
-          <button type="button" class="button-end" data-action="close-modal">
+          <button
+            type="button"
+            class="button button-close"
+            data-action="close-modal"
+          >
             Закрити
           </button>
         </div>
       </div>
     </main>
-    <script src="../jska/1-js.js" type="module"></script>
+    <script src="../src/JavaScript/js1.js" type="module"></script>
   </body>
 </html>
