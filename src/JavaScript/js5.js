@@ -14,5 +14,5 @@ povzunok.addEventListener("input", Drag);
 // тут мабуть через цикл йде
 // я не знаю, як зробити, щоб воно правильно зменшувалось і збільшувалось
 function Drag(event) {
-  text.style.fontSize = Math.random() * (10 - 1) + 1 + "pt";
+  text.style.fontSize = povzunok.value + "px";
 }
