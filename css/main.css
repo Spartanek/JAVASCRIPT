@@ -32,6 +32,11 @@ header {
   margin-right: 20px;
 }
 
+.header-link {
+  font-family: "Courier New", Courier, monospace;
+  font-size: medium;
+}
+
 body.show-modal .backdrop {
   opacity: 1;
   visibility: visible;
