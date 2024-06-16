@@ -11,7 +11,8 @@ function InputName(event) {
 // трохи дивно виглядає
 // чи нормально, що коли набирвається потрібна кількість символів, то воно червоне (що правильно), але коли починаю прибирати елементи, то нічого не змінюється
 const checking_input = document.getElementById("validation-input");
-checking_input.addEventListener("input", Checking);
+// щось з цим блуром і фокусом не зрозуміло, то воно як метод, то як подія
+checking_input.addEventListener("blur", Checking);
 function Checking(event) {
   if (checking_input.value.length < 6) {
     checking_input.classList.add("valid");

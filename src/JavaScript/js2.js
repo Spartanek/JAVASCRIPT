@@ -1,9 +1,8 @@
 const openButton = document.querySelector(".button-open");
 const backdrop = document.querySelector(".backdrop");
-const closeButton = document.querySelector(".button-close");
 
 openButton.addEventListener("click", openModal);
-closeButton.addEventListener("click", closeModal);
+backdrop.addEventListener("click", closeModal);
 
 function openModal(event) {
   document.body.classList.add("show-modal");
@@ -14,5 +13,10 @@ function openModal(event) {
 
   backdrop.style.pointerEvents = "initial";
 }
-
-function closeModal(event) {}
+// в бібліотеках якось через window.onclick робили. Не зрозумів як
+function closeModal(event) {
+  document.body.classList.remove("show-modal");
+  backdrop.style.opacity = 0;
+  backdrop.style.visibility = "hidden";
+  backdrop.style.pointerEvents = "none";
+}
