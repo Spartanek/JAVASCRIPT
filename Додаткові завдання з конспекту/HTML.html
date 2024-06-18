@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <p style="background-color: brown">Перше завдання</p>
+      <!-- 1 -->
+      <p
+        class="testingText"
+        style="font-family: 'Courier New', Courier, monospace"
+      >
+        Пешка для тестингу
+      </p>
+      <!-- 2 -->
+      <p style="background-color: brown">Друге завдання</p>
+      <input type="number" class="inputyk" placeholder="пишіть 0,1,2" />
+      <p class="input-text">Пешка для інпуту</p>
+      <!-- творче дз -->
+      <input class="inputchecking" placeholder="впишіть число від 55 до 99" />
+      <!-- Завдання на перевірку прізвища та імені -->
+      <div>
+        <input type="text" id="name" placeholder="Enter your name" />
+        <input type="text" id="surname" placeholder="Enter your surname" />
+        <button onclick="checkNameAndSurname()">Check</button>
+        <p id="result"></p>
+      </div>
+      <!-- Помилка 
+       HTML.html:28 Uncaught ReferenceError: checkNameAndSurname is not defined at HTMLButtonElement.onclick -->
+      <!-- Тест на зміну мови -->
+      <!-- якщо немає однакового name, то можна всі обрати і неможливо відмінити -->
+      <form action="">
+        <input type="radio" name="group1" />
+        <input type="radio" name="group1" />
+        <input type="radio" name="group1" />
+        <input type="radio" name="group1" />
+      </form>
+    </main>
+    <script src="./javaScript1.js" type="module"></script>
+    <script src="./javaScript2.js" type="module"></script>
+    <!-- <script src="./javaScript3.js" type="module"></script> -->
+    <script src="./javaScript4.js" type="module"></script>
+  </body>
+</html>
