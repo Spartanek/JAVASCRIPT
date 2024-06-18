@@ -65,3 +65,7 @@ if (randomNumber === 1) {
   console.log("Тобі випала п'ятірочка");
 }
 // Змінна lang може приймати 4 значення: 'ua', 'en', 'ru', 'fr'. За допомогою конструкції switch виведи на екран назву місяця в залежності від обраної мови. Наприклад, якщо lang = 'fr', то в консоль виводимо "Janvier".
+const ukranianButton = document.querySelector("[value=ua]");
+const englishButton = document.querySelector("[value=en]");
+const russianButton = document.querySelector("[value=ru]");
+const frenchButton = document.querySelector("[value=fr]");
