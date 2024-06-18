@@ -65,7 +65,72 @@ if (randomNumber === 1) {
   console.log("Тобі випала п'ятірочка");
 }
 // Змінна lang може приймати 4 значення: 'ua', 'en', 'ru', 'fr'. За допомогою конструкції switch виведи на екран назву місяця в залежності від обраної мови. Наприклад, якщо lang = 'fr', то в консоль виводимо "Janvier".
-const ukranianButton = document.querySelector("[value=ua]");
-const englishButton = document.querySelector("[value=en]");
-const russianButton = document.querySelector("[value=ru]");
-const frenchButton = document.querySelector("[value=fr]");
+// const radioButtons = document.querySelectorAll("[name=group1]");
+// const multiP = document.getElementById("multiP");
+// radioButtons.addEventListener("click, changeLanguage");
+// function changeLanguage(event) {
+//   const selectedValue = radioButtons.value;
+//   switch (selectedValue) {
+//     case "ua":
+//       multiP.textContent = "Січень";
+//       break;
+//     case "en":
+//       multiP.textContent = "January";
+//       break;
+//     case "ru":
+//       multiP.textContent = "Январь";
+//       break;
+//     case "fr":
+//       multiP.textContent = "Janvier";
+//       break;
+//     default:
+//       multiP.textContent = "В залежності від кнопки буде зміна мови";
+//   }
+// }
+const radioButtons = document.querySelectorAll('input[name="group1"]');
+const multiP = document.getElementById("multiP");
+const img = document.getElementById("img");
+// всеодно треба проговорити
+radioButtons.forEach((radioButton) => {
+  radioButton.addEventListener("click", changeLanguage);
+});
+
+function changeLanguage(event) {
+  // не поняв запису після дорівнює
+  const selectedValue = event.target.value;
+
+  switch (selectedValue) {
+    case "ua":
+      multiP.textContent = "Січень";
+      img.src = "../img/multinational-corporations-50.jpg";
+      break;
+    case "en":
+      multiP.textContent = "January";
+      img.src = "../img/multinational-corporations-50.jpg";
+      break;
+    case "ru":
+      // цікаво, що змінена картинка далі йде, що треба додавати ручками у кожен випадок
+      multiP.textContent = "Що тут у нас?";
+      img.src = "../img/81f878d5e1ccb9a1cba880557ff564a3.jpg";
+      break;
+    case "fr":
+      multiP.textContent = "Janvier";
+      img.src = "../img/multinational-corporations-50.jpg";
+      break;
+    default:
+      multiP.textContent = "В залежності від кнопки буде зміна мови";
+  }
+}
+// Select Radio Buttons:
+
+// const radioButtons = document.querySelectorAll('input[name="group1"]'); selects all radio buttons with the name group1.
+// Add Event Listeners:
+
+// radioButtons.forEach(radioButton => { ... }); loops through each radio button.
+// radioButton.addEventListener("click", changeLanguage); adds a click event listener to each radio button, so the changeLanguage function is called whenever a radio button is clicked.
+// Change Language Function:
+
+// function changeLanguage(event) { ... } defines the function to be called when a radio button is clicked.
+// const selectedValue = event.target.value; gets the value of the clicked radio button.
+// switch (selectedValue) { ... } uses a switch statement to change the text content of the paragraph based on the selected radio button's value.
+// This should ensure that the text in the paragraph element updates correctly based on the selected radio button.

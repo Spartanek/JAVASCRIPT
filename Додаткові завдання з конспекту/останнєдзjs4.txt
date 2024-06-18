@@ -1,0 +1,87 @@
+Step-by-Step Breakdown
+Step 1: Set Up Your HTML
+Create a form with multiple radio buttons, each having a unique value and the same name. This ensures they are part of the same group and only one can be selected at a time.
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selector</title>
+</head>
+<body>
+    <form action="">
+        <input type="radio" value="ua" name="group1" /> UA
+        <input type="radio" value="en" name="group1" /> EN
+        <input type="radio" value="ru" name="group1" /> RU
+        <input type="radio" value="fr" name="group1" /> FR
+        <p id="multiP">В залежності від кнопки буде зміна мови</p>
+    </form>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
+Each <input> element has type="radio", name="group1", and a unique value (ua, en, ru, fr).
+The paragraph <p> element with id="multiP" will display the result based on the selected radio button.
+Step 2: Select Radio Buttons in JavaScript
+In your JavaScript file (script.js), select all radio buttons with the same name and the paragraph element where you want to display the result.
+
+javascript
+Copy code
+const radioButtons = document.querySelectorAll('input[name="group1"]');
+const multiP = document.getElementById("multiP");
+document.querySelectorAll('input[name="group1"]'); selects all radio buttons with the name group1 and stores them in the radioButtons variable.
+document.getElementById("multiP"); selects the paragraph element by its ID.
+Step 3: Add Event Listeners to Radio Buttons
+Loop through each radio button and add an event listener that calls the changeLanguage function when the button is clicked.
+
+javascript
+Copy code
+radioButtons.forEach(radioButton => {
+    radioButton.addEventListener("click", changeLanguage);
+});
+radioButtons.forEach(radioButton => { ... }); loops through each radio button.
+radioButton.addEventListener("click", changeLanguage); adds a click event listener to each radio button, so the changeLanguage function is called whenever a radio button is clicked.
+Step 4: Define the Change Language Function
+Create the changeLanguage function that will be called when a radio button is clicked. This function determines which radio button is selected and updates the paragraph text based on its value.
+
+javascript
+Copy code
+function changeLanguage(event) {
+    const selectedValue = event.target.value; // Get the value of the selected radio button
+
+    switch (selectedValue) {
+        case "ua":
+            multiP.textContent = "Січень"; // Ukrainian for January
+            break;
+        case "en":
+            multiP.textContent = "January"; // English for January
+            break;
+        case "ru":
+            multiP.textContent = "Январь"; // Russian for January
+            break;
+        case "fr":
+            multiP.textContent = "Janvier"; // French for January
+            break;
+        default:
+            multiP.textContent = "В залежності від кнопки буде зміна мови"; // Default message
+    }
+}
+const selectedValue = event.target.value; gets the value of the clicked radio button.
+switch (selectedValue) { ... } uses a switch statement to check the value and update the paragraph text accordingly.
+Summary
+HTML Setup:
+
+Create radio buttons with the same name and unique values.
+Add a paragraph to display the result.
+JavaScript Setup:
+
+Select all radio buttons and the paragraph element.
+Add click event listeners to each radio button.
+Event Handling:
+
+Define a function to handle the click event.
+Determine the selected radio button's value and update the paragraph text accordingly.
+By following these steps, you ensure that clicking a radio button updates the paragraph text based on the selected language, using a clean and efficient approach.
