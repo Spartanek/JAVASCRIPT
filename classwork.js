@@ -20,7 +20,39 @@ function functionSuper(e) {
 // Конвертер оцінок (switch case):
 // Створіть switch case, який конвертує числову оцінку(0 - 100) у літерну(A, B, C, D, F).Використайте такі діапазони:
 //     A: 90 - 100, B: 80 - 89, C: 70 - 79, D: 60 - 69, F: 0 - 59.
+const input2 = document.querySelector(".input2Dop");
+const text2 = document.querySelector(".sms2");
 
+input2.addEventListener("input", functionMarks);
+
+function functionMarks(e) {
+  const valueshka = parseInt(e.target.value);
+  // Switch Statement for Grade Conversion:
+
+  // switch (true) { ... }
+  // A switch statement is used to determine which letter grade corresponds to the numeric grade stored in valueshka.
+  // Using switch (true) allows us to evaluate each case as a boolean expression.
+  switch (true) {
+    case valueshka >= 90 && valueshka <= 100:
+      text2.textContent = "A";
+      break;
+    case valueshka >= 80 && valueshka <= 90:
+      text2.textContent = "B";
+      break;
+    case valueshka >= 70 && valueshka <= 79:
+      text2.textContent = "C";
+      break;
+    case valueshka >= 60 && valueshka <= 69:
+      text2.textContent = "D";
+      break;
+    case valueshka >= 0 && valueshka <= 59:
+      text2.textContent = "F";
+      break;
+    default:
+      text2.textContent = "Invalid grade";
+      break;
+  }
+}
 // Визначення сезону (if...else if):
 // Напишіть if else, яка приймає номер місяця(1 - 12) і повертає, до якого сезону він належить.
 // const input3 = document.querySelector(".input3Dop");
@@ -89,13 +121,128 @@ function functionYear(e) {
 }
 // Світлофор (if...else if та switch case):
 // Напишіть два варіанти (з використанням if...else if та switch case),  приймає колір світлофора і повертає дію ("Йдіть", "Приготуйтесь", "Стійте").
-
+const input6 = document.querySelector(".input6Dop");
+const text6 = document.querySelector(".sms6");
+input6.addEventListener("input", functionColours);
+function functionColours(e) {
+  const colorValue = e.target.value.trim().toLowerCase();
+  // if (colorValue === "червоний") {
+  //   text6.textContent = "Стійте";
+  // } else if (colorValue === "жовтий") {
+  //   text6.textContent = "Приготуйтесь";
+  // } else if (colorValue === "зелений") {
+  //   text6.textContent = "Стійте";
+  // } else {
+  //   text6.textContent = "щось не то";
+  // }
+  switch (colorValue) {
+    case "червоний":
+      text6.textContent = "Стійте";
+      break;
+    case "жовтий":
+      text6.textContent = "Приготуйтесь";
+      break;
+    case "зелений":
+      text6.textContent = "Стійте";
+      break;
+    default:
+      text6.textContent = "щось не то";
+      break;
+  }
+}
 // Абсолютне значення (тернарний оператор):
 // Напишіть тернарний оператор, який повертає абсолютне значення числа(-3 = 3, 10 = 10)
-
+const input7 = document.querySelector(".input7Dop");
+const text7 = document.querySelector(".sms7");
+input7.addEventListener("input", absoluteFunction);
+function absoluteFunction(e) {
+  // Math.abs();
+  const absValue = parseInt(e.target.value);
+  const absFinishValue = absValue < 0 ? Math.abs(absValue) : absValue;
+  text7.textContent = "Абсолютне значення" + " " + absFinishValue;
+}
 // Категоризація віку (if...else if):
 // Створіть блок if else, яка приймає вік і повертає категорію: "Дитина"(0 - 12), "Підліток"(13 - 19), "Дорослий"(20 - 64), "Пенсіонер"(65 +).
+const input8 = document.querySelector(".input8Dop");
+const text8 = document.querySelector(".sms8");
+
+input8.addEventListener("input", functionAge);
+
+function functionAge(e) {
+  const ageValue = parseInt(e.target.value);
+  if (ageValue >= 0 && ageValue <= 12) {
+    text8.textContent = "Ти дитина";
+  } else if (ageValue >= 13 && ageValue <= 19) {
+    text8.textContent = "Ти підліток";
+  } else if (ageValue >= 20 && ageValue <= 64) {
+    text8.textContent = "Ти дорослий";
+  } else if (ageValue >= 65) {
+    text8.textContent = "Йой, ти вже пенсіонер";
+  } else {
+    text8.textContent = "Щось не то";
+  }
+}
+//   The issue in your code is related to the logic of the if and else if statements. The conditions are being checked in a way that once a condition is true, it will execute the corresponding block and skip the rest. This causes incorrect evaluations. Specifically, the problem lies in the ordering of the else if statements. Let's correct this:
+
+// Fix the order of conditions: Ensure that the age ranges do not overlap incorrectly. For instance, the current order means that an age of 15 will be evaluated as a child because it only checks if age > 0 before it checks if age > 13.
+// if (ageValue > 0) {
+//   text8.textContent("Ти дитина");
+// } else if (ageValue > 13) {
+//   text8.textContent("Ти підліток");
+// } else if (ageValue > 20) {
+//   text8.textContent("Ти дорослий");
+// } else if (ageValue > 65) {
+//   text8.textContent("Йой, ти вже пенсіонер");
+// } else {
+//   text8.textContent("Щось пішло не за планом");
+// }
 
 // Вибір способу оплати (switch case та тернарний оператор):
 // Напишіть функцію, яка приймає спосіб оплати(готівка, кредитна картка, PayPal) і суму.Поверніть повідомлення про комісію: 0 % для готівки, 2 % для кредитної картки, 3 % для PayPal.
 // Використайте switch case для вибору способу оплати та тернарний оператор для визначення, чи потрібно додавати слово "комісія" до відповіді.
+// const formaOstanya = document.querySelector(".formaOstanya");
+// const peshka = document.querySelector(".sms9");
+// formaOstanya.addEventListener("submit", functionForma);
+// function functionForma(e) {
+//   e.preventDefault();
+//   // Add event listener to each radio button
+//   // це, щоб повісити на кожен радіо кнопку, але я не розумію повністю цей запис
+//   // як це записати через target
+//   const inputy = document.querySelectorAll(".classInput");
+//   inputy.forEach((button) => {
+//     button.addEventListener("input", functionForFunction);
+//   });
+//   function functionForFunction(e) {
+//     const constanta = e.target.value;
+//     // через switch case оприділяти кнопку
+//     switch (constanta) {
+//       case "A":
+//         break;
+//       case "B":
+//         break;
+//       case "C":
+
+//       default:
+//         break;
+//     }
+//   }
+//   const inputMoney = e.elements.nameInputMoney;
+//   console.log(inputMoney);
+// }
+
+// // const inputMoney = document.querySelector(".inputMoney");
+// // inputMoney.addEventListener("input", functionMoney);
+// // function functionMoney(e) {
+// //   const money = e.target.value;
+// // }
+
+// // // через тренарний оператор визначити чи треба додавати слово комісія до відповіді
+// // constanta.value === "B"
+// //   ? peshka.textContent(
+// //       "Ви оплатили кредитною картою. Комісія становить" + " " + money * 0.02
+// //     )
+// //   : constanta.value === "C"
+// //   ? peshka.textContent(
+// //       "Ви оплатили через PayPal. Комісія становить" + " " + money * 0.03
+// //     )
+// //   : "ніякої комісії";
