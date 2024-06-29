@@ -90,7 +90,7 @@ function functionForm2(e) {
   if (text.length > 3 && email.includes("@gmail.com") && password.length > 6) {
     //   не поняв як переправляти на іншу сторінку
     window.location = "https://www.instagram.com/go_iteens/";
-    // message5.textContent("https://www.instagram.com/go_iteens/");
+    // message5.textContent="https://www.instagram.com/go_iteens/";
   } else {
     //   якось треба вказувати помилку в конкретному інпуті?
     message5.textContent = "Щось пішло не за планом";
