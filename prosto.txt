@@ -1,0 +1,6 @@
+const array = [1, 3, 5, 6, 7];
+const slicedArray = array.slice(0, 3);
+
+console.log(slicedArray); // Outputs: [1, 3, 5]
+ 
+всеодно не поняв як працює
