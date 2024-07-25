@@ -83,8 +83,6 @@ for (let i = 0; i < 8; i++) {
 }
 
 for (let i = 0; i < 8; i++) {
-  const elementspysok1 = nonComparedArray1[i];
-  const elementspysok2 = nonComparedArray2[i];
   if (nonComparedArray1[i] === nonComparedArray2[i]) {
     comparedArray.push(nonComparedArray1[i]);
   }
