@@ -28,7 +28,7 @@ button.addEventListener("click", checkGuess);
 function checkGuess(e) {
   // мабуть е ставити не треба, бо я звертаюсь до інпута
   const inputValue = Number(input.value);
-  const random = Math.floor(Math.random() * 3);
+  const random = Math.floor(Math.random() * 101);
   console.log(random);
   if (inputValue === random) {
     peshka.textContent = "Ви вгадали!";
