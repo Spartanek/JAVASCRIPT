@@ -63,8 +63,9 @@ const createPasswordGenerator = function (pack) {
 };
 // Тут не поняв взагалі щодо return function
 // const generatePassword = createPasswordGenerator(pack);
-// console.log(generatePassword(8));
+
 //  сonsole.log(createPasswordGenerator(pack)(8)); якась дивна багана консоль
+// console.log(generatePassword(8));
 console.log(createPasswordGenerator(pack)(8));
 // Створіть функцію greet, яка приймає ім'я користувача та привітання. Якщо привітання не передано, використайте "Привіт" за замовчуванням.
 const nameUser = prompt("Впиши ім'я");
