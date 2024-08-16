@@ -7,28 +7,36 @@ const bankAccount = {
   accountNumber: 123456789,
   balance: 7,
   deposit(valuesh) {
+    if (valuesh <= 0) {
+      throw new Error("Від.ємні значення ввести не можна");
+    }
     this.balance += valuesh;
     console.log(`Залишок на балансі ${this.balance}`);
   },
   withdraw(valuesh) {
+    if (valuesh <= 0) {
+      throw new Error("Від.ємні значення ввести не можна");
+    }
     this.balance -= valuesh;
     console.log(`Залишок на балансі ${this.balance}`);
   },
 };
 // як можна за одну ф-цію зробити через розгалудження на ці два види кнопки, а не окремо кожну?
 
-const depositFunc = function (e) {
-  const value = Number(inputForMoney.value);
-  bankAccount.deposit(value);
-};
 const withdrawFunc = function (e) {
   const value = Number(inputForMoney.value);
   bankAccount.withdraw(value);
 };
-// клік треба, а не сабміт
-depositnaButton.addEventListener("click", depositFunc);
-
 gotivkaButton.addEventListener("click", withdrawFunc);
+// клік треба, а не сабміт
+depositnaButton.addEventListener("click", (e) => {
+  const value = Number(inputForMoney.value);
+  bankAccount.deposit(value);
+});
+
+// gotivkaButton.addEventListener("click", e =>{
+// const value = Number(inputForMoney.value);
+// bankAccount.withdraw(value);});
 
 // Створіть об'єкт "weather" з властивостями "temperature", "humidity", "windSpeed". Додайте до об'єкту метод, який повертає "true", якщо температура нижче 0 градусів Цельсія, та "false", якщо температура вище або рівна 0 градусів Цельсія. Температуру потрібно отримати з інпуту на сторінці. Якщо метод повернув "true" вивести повідомлення “температура нижче 0 градусів Цельсія” і навпаки
 const inputyk = document.querySelector(".tempInput");
