@@ -1,33 +1,40 @@
 // Завдання 1
-// Напиши скрипт, який, для об'єкта user, послідовно:
-
-// додає поле mood зі значенням 'happy'
-// замінює значення hobby на 'skydiving'
-// замінює значення premium на false
-// виводить вміст об'єкта user в форматі ключ:значення використовуючи Object.keys() і for...of
 const user = {
   name: "Mango",
   age: 20,
   hobby: "html",
   premium: true,
 };
-// Отримуємо масив ключів об'єкта
-const keysUser = Object.keys(user);
-user.mood = "happy";
+
 user.hobby = "skydiving";
 user.premium = false;
+user.mood = "happy";
 
-// Проходимо по масиву ключів за допомогою for...of
-// for...of цикл перебирає всі ключі в об'єкті user, які ви отримуєте за допомогою Object.keys(user).
-// user[key] — це доступ до значення об'єкта user, яке відповідає поточному ключу key.
-// Object.values(user) повертає масив усіх значень, які є в об.єкті user, але воно не пов'язане з поточним ключем, тому цей виклик всередині for...of циклу не підходить.
+const { name, age, hobby, premium, mood } = user;
+
+console.log(name, age, hobby, premium, mood);
+const keysUser = Object.keys(user);
 for (const key of keysUser) {
-  //   console.log(user[key], Object.values(key));
-  //  вивожу user[key] і Object.values(user) разом, але Object.values(user) повертає масив усіх значень в об'єкті, а не тільки значення, яке відповідає поточному ключу в циклі.
-  console.log(`${key}, ${user[key]}`);
+  console.log(`${key}: ${user[key]}`);
 }
+// НЕ ПРАЦЮЄ
+// const user = {
+//   name: "Mango",
+//   age: 20,
+//   hobby: "html",
+//   premium: true,
+// };
+
+// const {
+//   name,
+//   age,
+//   hobby: newHobby = "skydiving",
+//   premium: newPremium = false,
+//   mood = "happy",
+// } = user;
+
+// console.log(name, age, newHobby, newPremium, mood);
 // Завдання 2
-// Напиши функцію countProps(obj), яка рахує кількість властивостей в об'єкті. Функція повертає число - кількість властивостей.
 
 const countProps = function (obj) {
   let totalValues = 0;
@@ -46,8 +53,19 @@ console.log(countProps({})); // 0
 console.log(countProps({ name: "Mango", age: 2 })); // 2
 
 console.log(countProps({ mail: "poly@mail.com", isOnline: true, score: 500 })); // 3
+// трохи не так, але думаю можна
+// таких ключів не було у цьому об.єкті, тобто вже існуючі треба перейменувати
+// const { name2, age2 } = { name: "Mango", age: 2 };
+// console.log(name2, age2);
+const { name: name2, age: age2 } = { name: "Mango", age: 2 };
+console.log(name2, age2);
+const { mail, isOnline, score } = {
+  mail: "poly@mail.com",
+  isOnline: true,
+  score: 500,
+};
+console.log(mail, isOnline, score);
 // Завдання 4
-// Напиши функцію countTotalSalary(employees) приймаючу об'єкт зарплат. Функція рахує загальну суму зарплати працівників і повертає її. Кожне поле об'єкта, переданого в функцію, має вигляд "ім'я":"зарплата".
 
 const countTotalSalary = function (employees) {
   let total = 0;
@@ -80,7 +98,27 @@ console.log(
     chelsy: 150,
   })
 ); // 400
-
+// Чи можна якось підв.язати назву ключа з такого об.єкта, як у нас, щоб постійно не переписувати при деструктур.? Тут йде про одну тему (зарплата), але ключі (імена тут) різні
+const {
+  mango: mangoSalary,
+  poly: polySalary,
+  alfred: alfredSalary,
+} = {
+  mango: 100,
+  poly: 150,
+  alfred: 80,
+};
+console.log(mangoSalary, polySalary, alfredSalary);
+const {
+  kiwi: kiwiSalary,
+  lux: luxSalary,
+  chelsy: chelsySalary,
+} = {
+  kiwi: 200,
+  lux: 50,
+  chelsy: 150,
+};
+console.log(kiwiSalary, luxSalary, chelsySalary);
 // Завдання 3
 // Напиши функцію findBestEmployee(employees), яка приймає об'єкт співробітників і повертає ім'я найпродуктивнішого (який виконав більше всіх задач). Співробітники і кількість виконаних завдань містяться як властивості об'єкта в форматі "ім'я":"кількість задач".
 
@@ -114,6 +152,18 @@ const findBestEmployee = function (employees) {
 /*
  * Викличи функції для перевірки працездатності твоєї реалізації.
  */
+const {
+  ann: ann1,
+  david: david1,
+  helen: helen1,
+  lorence: lorence1,
+} = {
+  ann: 29,
+  david: 35,
+  helen: 1,
+  lorence: 99,
+};
+console.log(ann1, david1, helen1, lorence1);
 console.log(
   findBestEmployee({
     ann: 29,
@@ -123,6 +173,16 @@ console.log(
   })
 ); // lorence
 
+const {
+  poly: poly2,
+  mango: mango2,
+  ajax: ajax2,
+} = {
+  poly: 12,
+  mango: 17,
+  ajax: 4,
+};
+console.log(poly2, mango2, ajax2);
 console.log(
   findBestEmployee({
     poly: 12,
@@ -131,6 +191,18 @@ console.log(
   })
 ); // mango
 
+const {
+  lux: lux3,
+  david: david3,
+  kiwi: helen3,
+  chelsy: lorence3,
+} = {
+  lux: 147,
+  david: 21,
+  kiwi: 19,
+  chelsy: 38,
+};
+console.log(lux3, david3, helen3, lorence3);
 console.log(
   findBestEmployee({
     lux: 147,
