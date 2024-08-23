@@ -236,45 +236,68 @@ const account = {
   transactions: [],
 
   /*
-   * Метод створює і повертає об'єкт транзакції.
+    і повертає об'єкт транзакції.
    * Приймає суму і тип транзакції.
    */
   createTransaction(amount, type) {
-    const transactionObject = {
-      id: 1,
-      type,
+    // id - має бути унікальним
+    // Метод створює
+    const transaction = {
       amount,
+      type,
+      // можна додати сюди типу рандомного генератору пароля замість id
+      id: Math.floor(Math.random() * 1000 + 1),
     };
+    return transaction;
   },
 
   /*
    * Метод відповідає за додавання суми до балансу.
    * Приймає суму танзакції.
-   * Викликає createTransaction для створення об'єкта транзакції
-   * після чого додає його в історію транзакцій
+   
+   
    */
   deposit(amount) {
     this.balance += amount;
-    this.transactions.push(this.createTransaction());
+    //  Викликає createTransaction для створення об'єкта транзакції
+    const depositTransaction = this.createTransaction(
+      amount,
+      Transaction.DEPOSIT
+    );
+    // push - він дозволяє додасти що передасте в масив
+    // після чого додає його в історію транзакцій
+    this.transactions.push(depositTransaction);
   },
 
   /*
-   * Метод відповідає за зняття суми з балансу.
+   
    * Приймає суму танзакції.
    * Викликає createTransaction для створення об'єкта транзакції
-   * після чого додає його в історію транзакцій.
-   *
-   * Якщо amount більше, ніж поточний баланс, виводь повідомлення
-   * про те, що зняття такої суми не можливо, недостатньо коштів.
+   
+   
+   
    */
-  withdraw(amount) {},
+  withdraw(amount) {
+    //  Якщо amount більше, ніж поточний баланс, виводь повідомлення
+    //  про те, що зняття такої суми не можливо, недостатньо коштів.
+    if (amount > this.balance) {
+      console.log("зняття такої суми не можливо, недостатньо коштів");
+      return;
+    }
+    //  Метод відповідає за зняття суми з балансу.
+    this.balance -= amount;
+    const withdrawTransaction = this.createTransaction(
+      amount,
+      Transaction.WITHDRAW
+    );
+    // після чого додає його в історію транзакцій.
+    this.transactions.push(withdrawTransaction);
+  },
 
   /*
    * Метод повертає поточний баланс
    */
-  getBalance() {
-    console.log(this.account);
-  },
+  getBalance() {},
 
   /*
    * Метод шукає і повертає об'єкт транзакції по id
