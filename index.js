@@ -221,18 +221,28 @@ const products5 = [
   { name: "Дроїд", price: 400, quantity: 7 },
   { name: "Захоплення", price: 1200, quantity: 2 },
 ];
+const destrFunc = function ({ name, price, quantity }) {
+  console.log(name, price, quantity);
+};
+destrFunc(products5[0]);
+destrFunc(products5[1]);
+destrFunc(products5[2]);
+destrFunc(products5[3]);
 
-// const getAllPropValues = function (arr, prop) {
-//   const returningArray = [];
-//   // зроблено список з 4 елементів
-//   for (const elementArray of arr) {
-//     //   кожен елемент був поділений на 3 маленьки списки в яких є властивості
-//     const smallArrays = Object.entries(elementArray);
-//     if (smallArrays.includes(prop)) {
-//       console.log(gg);
-//     }
-//   }
+// Щось не то зробив
+// const destrFunc = function ({ nameParam, priceParam, quanParam }) {
+//   const { nameParam, priceParam, quanParam } = {
+//     nameParam,
+//     priceParam,
+//     quanParam,
+//   };
+//   console.log(nameParam, priceParam, quanParam);
 // };
+// destrFunc({ name: "Радар", price: 1300, quantity: 4 });
+// destrFunc({ name: "Сканер", price: 2700, quantity: 3 });
+// destrFunc({ name: "Дроїд", price: 400, quantity: 7 });
+// destrFunc({ name: "Захоплення", price: 1200, quantity: 2 });
+
 const getAllPropValues = function (arr, prop) {
   // створюю список до завповнення
   const returningArray = [];
@@ -260,7 +270,7 @@ console.log(getAllPropValues(products5, "category")); // []
 // Напиши функцію calculateTotalPrice(allProdcuts, productName), яка отримує масив об'єктів та ім'я продукту (значення властивості name). Повертає загальну вартість продукту (ціна * кількість).
 
 // Викличи функції для перевірки працездатності твоєї реалізації.
-
+// я у минулій задачі виводив
 const products6 = [
   { name: "Радар", price: 1300, quantity: 4 },
   { name: "Сканер", price: 2700, quantity: 3 },
@@ -324,7 +334,10 @@ const account = {
       id: randomId,
       // id: 1,
     };
-
+    // не треба прописувати amount, type, бо це вже константа
+    // але чи потрібно писати id чи randomid?
+    const { id } = transaction;
+    console.log(amount, type, id);
     return transaction;
   },
 
