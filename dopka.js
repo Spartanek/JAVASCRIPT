@@ -22,6 +22,7 @@ const library = {
       author: "Harper Lee",
       genre: "Fiction",
       year: 1960,
+      borrow: false,
     },
     {
       id: 2,
@@ -29,6 +30,7 @@ const library = {
       author: "George Orwell",
       genre: "Dystopian",
       year: 1949,
+      borrow: false,
     },
     {
       id: 3,
@@ -36,6 +38,7 @@ const library = {
       author: "F. Scott Fitzgerald",
       genre: "Classics",
       year: 1925,
+      borrow: false,
     },
     {
       id: 4,
@@ -43,6 +46,7 @@ const library = {
       author: "Jane Austen",
       genre: "Romance",
       year: 1813,
+      borrow: false,
     },
     {
       id: 5,
@@ -50,6 +54,7 @@ const library = {
       author: "J.D. Salinger",
       genre: "Literature",
       year: 1951,
+      borrow: false,
     },
   ],
 
@@ -61,6 +66,7 @@ const library = {
       email: "oleksandr.petrenko@example.com",
       age: 32,
       isSubscribed: true,
+      books: [],
     },
     {
       id: 3002,
@@ -68,6 +74,7 @@ const library = {
       email: "mariya.ivanenko@example.com",
       age: 27,
       isSubscribed: false,
+      books: [],
     },
     {
       id: 3003,
@@ -75,6 +82,7 @@ const library = {
       email: "andriy.kovalchuk@example.com",
       age: 45,
       isSubscribed: true,
+      books: [],
     },
     {
       id: 3004,
@@ -82,6 +90,7 @@ const library = {
       email: "nataliya.shevchenko@example.com",
       age: 39,
       isSubscribed: true,
+      books: [],
     },
     {
       id: 3005,
@@ -89,6 +98,7 @@ const library = {
       email: "ihor.sydorenko@example.com",
       age: 24,
       isSubscribed: false,
+      books: [],
     },
   ],
 
@@ -118,6 +128,7 @@ const library = {
   addBook(bookInfo) {
     const newBook = {
       id: Math.random() * (1000 - 5) + 5,
+      borrow: false,
       // весь вміст який вклали у bookInfo
       ...bookInfo,
     };
@@ -132,6 +143,7 @@ const library = {
   addReader(readerInfo) {
     const newReader = {
       id: Math.random() * (4000 - 3005) + 3005,
+      books: [],
       // весь вміст який вклали у bookInfo
       ...readerInfo,
       isSubscribed: false, // Новий читач за замовчуванням не підписаний
@@ -149,10 +161,12 @@ const library = {
    * Якщо книга вже видана або читач має заборгованість, виводить відповідне повідомлення.
    */
   borrowBook(bookId, readerId) {
-    const book = this.book.find((bookItem) => bookItem.id === bookId);
+    const book = this.books.find((bookItem) => bookItem.id === bookId);
+    console.log(book);
     const person = this.readers.find(
       (readersItem) => readersItem.id === readerId
     );
+    console.log(person);
     if (!book) {
       console.log("Такої книги у нас немає в базі");
       return;
@@ -161,21 +175,31 @@ const library = {
       console.log("Такої читача у нас немає в базі");
       return;
     }
+    //   person.isSubscribed !== true;
+    if (!person.isSubscribed) {
+      console.log("Людина не підписана на наш сервіс");
+    }
     // Перевіряємо, чи книга вже була видана
-    const isBookBorrowed = this.operations.some(
-      (bookItem) =>
-        bookItem.bookId === bookId && bookItem.type === BookOperation.BORROW
-    );
-    if (isBookBorrowed) {
+
+    const borrowBook = this.books.find((book) => book.bookId === bookId);
+
+    // const isBookBorrowed = this.operations.some(
+    //   (bookItem) =>
+    //     bookItem.bookId === bookId && bookItem.type === BookOperation.BORROW
+    // );
+    if (borrowBook.borrow) {
       console.log("Книга вже видана.");
       return;
     }
+
+    person.books.push(book);
+    book.borrow = true;
     const borrowing = this.createOperation(
       BookOperation.BORROW,
       bookId,
       readerId
     );
-    console.log("Книга видана читачеві:", operation);
+    console.log("Книга видана читачеві:", borrowing);
   },
 
   /*
@@ -195,38 +219,46 @@ const library = {
       console.log("Такої читача у нас немає в базі");
       return;
     }
+    if (!person) {
+      console.log("Такої читача у нас немає в базі");
+      return;
+    }
     // Перевіряємо, чи книга була видана цьому читачеві
-    const isBookBorrowed = this.operations.some(
-      (op) =>
-        op.bookId === bookId &&
-        op.readerId === readerId &&
-        op.type === BookOperation.BORROW
+
+    const isBookBorrowed = this.operations.find(
+      (operation) =>
+        operation.bookId === bookId && operation.readerId === readerId
     );
 
     if (!isBookBorrowed) {
       console.log("Ця книга не була видана цьому читачеві.");
       return;
     }
-
+    book.borrow = false;
     // Додаємо операцію повернення книги
-    const operation = this.createOperation(
+    const operationGivingBack = this.createOperation(
       BookOperation.RETURN,
       bookId,
       readerId
     );
-    console.log("Книга повернута:", operation);
+    console.log(`Книга повернута: ${operationGivingBack}`);
   },
 
   /*
    * Метод повертає список доступних (не виданих) книг
    */
   getAvailableBooks() {
-    const spysok = [];
+    console.log(this.books.filter((bookItem) => bookItem.borrow === false));
   },
   /*
    * Метод повертає список книг, які зараз знаходяться у певного читача
    */
-  getReaderBooks(readerId) {},
+  getReaderBooks(readerId) {
+    const person = this.readers.find(
+      (readersItem) => readersItem.id === readerId
+    );
+    console.log(person.books);
+  },
   /*
    * Метод шукає і повертає об'єкт операції за id
    */
