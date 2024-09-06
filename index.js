@@ -1,72 +1,64 @@
 import users from "./users.js";
-// Here, you are giving the imported value (which is the default export from users.js) a local name: users. You can choose any name you want here. The name users is simply what you're choosing to call the imported array locally within index.js.
-// Завдання 1
-// Отримати масив імен всіх користувачів (поле name).
-const getUserNames = (korystuvachi) => {
-  //   Використовується метод map() для перебору масиву korystuvach. Метод map() створює новий масив, який містить лише імена користувачів. Назвав кожний об.єкт user, а вже в ньому знайшов імена
-  const names = korystuvachi.map((user) => user.name);
-  // Після виконання методу map() отриманий масив з іменами користувачів зберігається у змінній names.
-  return names;
-};
-// console.log(getUserNames(users)); — викликає функцію getUserNames з аргументом users (імпортованим масивом користувачів) та виводить результат у консоль.
-console.log(getUserNames(users));
-// [ 'Moore Hensley', 'Sharlene Bush', 'Ross Vazquez', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony' ]
-// Завдання 2
-// Отримати масив об'єктів користувачів за кольором очей (поле eyeColor).
+// Завдання 7
+// Отримати загальну суму балансу (поле balance) всіх користувачів.
 
-const getUsersWithEyeColor = (korystuvachi, color) => {
-  //ПОЯСНЕННЯ чого не map у питанні
-  const usersWithEyeColor = korystuvachi.filter(
-    (user) => user.eyeColor === color
+const calculateTotalBalance = (korystuvachi) => {
+  // якщо все так і залишити, але в наступному рядку змінити користувачі на users, то воно всеодно буде працювати
+  const sumBalance = korystuvachi.reduce(
+    (accu, korystuvach) => accu + korystuvach.balance,
+    0
   );
-  return usersWithEyeColor;
+  return sumBalance;
+  // твій код
+};
+console.log(calculateTotalBalance(users)); // 20916
+// Завдання 8
+// Масив імен всіх користувачів у яких є друг із зазначеним ім'ям.
+// Тут ви намагаєтеся порівняти user.friends безпосередньо з friendName. Однак, user.friends — це масив, а ви порівнюєте його зі строкою, що завжди буде призводити до false. Вам потрібно перевірити, чи існує friendName всередині масиву user.friends.
+
+// Рішення:
+// Щоб виправити помилку, скористайтеся методом Array.prototype.includes(), щоб перевірити, чи є friendName елементом масиву user.friends.
+// const getUsersWithFriend = (korystuvachi, friendName) => {
+// const filteringAndGiveNames = korystuvachi.map(
+//   (korystuvach) => korystuvach.friends === friendName
+// );
+// // твій код
+// return filteringAndGiveNames;
+// };
+// Розбираємось
+// Метод .filter тепер працює коректно, відфільтровуючи лише тих користувачів, у яких є friendName у списку друзів.
+// .includes(friendName) перевіряє, чи є friendName елементом масиву user.friends.
+// Метод .map потім витягує name кожного відфільтрованого користувача.
+const getUsersWithFriend = (korystuvachi, friendName) => {
+  const filtering = korystuvachi
+    .filter((korystuvach) => korystuvach.friends.includes(friendName))
+    .map((user) => user.name);
+  return filtering;
+};
+console.log(getUsersWithFriend(users, "Briana Decker")); // [ 'Sharlene Bush', 'Sheree Anthony' ]
+console.log(getUsersWithFriend(users, "Goldie Gentry")); // [ 'Elma Head', 'Sheree Anthony' ]
+// Завдання 9
+// завдання під величезним питанням
+// Масив імен (поле name) людей, відсортованих в залежності від кількості їх друзів (поле friends)
+// Дуже дивно працює
+const getNamesSortedByFriendsCount = (korystuvachi) => {
+  return korystuvachi
+    .map((user) => ({
+      // коли я тут і в наступних рядках змінював назву friendsCount, то нічого не працювало
+      name: user.name,
+      friendsCount: user.friends.length,
+    }))
+    .sort((a, b) => a.friendsCount - b.friendsCount)
+    .map((user) => user.name);
+
   // твій код
 };
 
-console.log(getUsersWithEyeColor(users, "blue")); // [об'єкт Moore Hensley, об'єкт Sharlene Bush, об'єкт Carey Barr]
-// Завдання 3
-// Отримати масив імен користувачів за статтю (поле gender).
+console.log(getNamesSortedByFriendsCount(users));
+// [ 'Moore Hensley', 'Sharlene Bush', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony', 'Ross Vazquez' ]
+// Завдання 10
+// завдання під величезним питанням
+// Отримати масив всіх умінь всіх користувачів (поле skills), при цьому не має бути повторюваних умінь і вони повинні бути відсортовані в алфавітному порядку.
 
-const getUsersWithGender = (korystuvachi, stat) => {
-  const usersGender = korystuvachi.filter((user) => user.gender === stat);
-  return usersGender;
-};
-
-console.log(getUsersWithGender(users, "male")); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
-// Завдання 4
-// Отримати масив тільки неактивних користувачів (поле isActive).
-
-const getInactiveUsers = (korystuvachi) => {
-  const neActiv = korystuvachi.filter((user) => !user.isActive);
-  return neActiv;
-};
-
-console.log(getInactiveUsers(users)); // [об'єкт Moore Hensley, об'єкт Ross Vazquez, об'єкт Blackburn Dotson]
-// Завдання 5
-// Отримати користувача (не масив) по email (поле email, він унікальний).
-
-const getUserWithEmail = (korystuvachi, poshta) => {
-  const userWithSpecificEmail = korystuvachi.find(
-    (user) => user.email === poshta
-  );
-  return userWithSpecificEmail;
-  // твій код
-};
-
-console.log(getUserWithEmail(users, "shereeanthony@kog.com")); // {об'єкт користувача Sheree Anthony}
-console.log(getUserWithEmail(users, "elmahead@omatom.com")); // {об'єкт користувача Elma Head}
-// Завдання 6
-// Отримати масив користувачів, які потрапляють у вікову категорію від min до max років (поле age).
-
-const getUsersWithAge = (korystuvachi, min, max) => {
-  const userWithSpecificAge = korystuvachi.filter(
-    (user) => user.age >= min && user.age <= max
-  );
-  return userWithSpecificAge;
-  // твій код
-};
-
-console.log(getUsersWithAge(users, 20, 30)); // [об'єкт Ross Vazquez, об'єкт Elma Head, об'єкт Carey Barr]
-
-console.log(getUsersWithAge(users, 30, 40));
-// [об'єкт Moore Hensley, об'єкт Sharlene Bush, об'єкт Blackburn Dotson, об'єкт Sheree Anthony]
+console.log(getSortedUniqueSkills(users));
+// [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
