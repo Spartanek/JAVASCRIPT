@@ -103,7 +103,25 @@ storage.removeItem("Пролонгер");
 console.table(storage.getItems()); // [ "Нанітоіди", "Залізні жупи", "Антигравітатор", "Дроїд" ]
 // Завдання 4
 // Напиши клас StringBuilder. На вхід він отримує один параметр - рядок, який записує у властивість _value.
-
+class StringBuilder {
+  constructor(string) {
+    this._value = string;
+  }
+  get value() {
+    // не працює
+    // console.log(this._value);
+    return this._value;
+  }
+  append(str) {
+    this._value += str;
+  }
+  prepend(str) {
+    this._value = str + this._value;
+  }
+  pad(str) {
+    this._value = str + this._value + str;
+  }
+}
 // Додай класу наступний функціонал:
 
 // Геттер value - повертає поточне значення поля _value
@@ -186,14 +204,14 @@ mustang.turnOn();
 mustang.accelerate(50);
 mustang.drive(2);
 
-Car.getSpecs(mustang);
+// Car.getSpecs(mustang);
 // maxSpeed: 200, speed: 50, isOn: true, distance: 100, price: 2000
 
 mustang.decelerate(20);
 mustang.drive(1);
 mustang.turnOff();
 
-Car.getSpecs(mustang);
+// Car.getSpecs(mustang);
 // maxSpeed: 200, speed: 0, isOn: false, distance: 130, price: 2000
 
 console.log(mustang.price); // 2000
