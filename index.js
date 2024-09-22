@@ -1,14 +1,11 @@
 // Напиши функцію-конструктор Account, яка створює об'єкт з властивостями login і email. В prototype функції-конструктора добав метод getInfo(), який виводить в консоль значення полів login і email об'єкта який його викликав.
-class Account {
-  constructor(login, email) {
-    //   this._login and this._email to assign values passed to the constructor.
-    this._login = login;
-    this._email = email;
-  }
-  getInfo() {
-    console.log(this._login, this._email);
-  }
+function Account({ login, email }) {
+  this.login = login;
+  this.email = email;
 }
+Account.prototype.getInfo = function () {
+  console.log(this.login, this.email);
+};
 console.log(Account.prototype.getInfo); // function
 
 const mango = new Account({
@@ -32,12 +29,18 @@ poly.getInfo(); // Login: Poly, Email: poly@mail.com
 // followers - число
 // Добав метод getInfo(), який, виводить рядок: User ${ім'я} is ${вік} years old and has ${кількість фоловерів} followers
 class User {
-  constructor(name, age, followers) {
+  //1 variant
+  // constructor(name, age, followers) {
+  //   this._name = name; // Consistent with underscore usage
+  //   this._age = age; // Consistent with underscore usage
+  //   this._followers = followers; // Consistent with underscore usage
+  // }
+  // 2 variant
+  constructor({ name, age, followers }) {
     this._name = name; // Consistent with underscore usage
     this._age = age; // Consistent with underscore usage
     this._followers = followers; // Consistent with underscore usage
   }
-
   getInfo() {
     console.log(
       `User ${this._name} is ${this._age} years old and has ${this._followers} followers`
@@ -46,36 +49,41 @@ class User {
 }
 // АЛЕ В ПЕРШОМУ ЗАВДАННІ ВСЕ ПРАЦЮВАЛО
 // ЧОГОСЬ НЕ ПРАЦЮЄ КОЛИ ТАК ЗАПИСАНО
-// const mango2 = new User({
-//   name: "Mango",
-//   age: 2,
-//   followers: 20,
-// });
-const mango2 = new User("Mango", 2, 20);
+// 2 variant
+const mango2 = new User({
+  name: "Mango",
+  age: 2,
+  followers: 20,
+});
+// БО Конструктор є і такий запис
+// 1 variant
+// const mango2 = new User("Mango", 2, 20);
 mango2.getInfo(); // User Mango is 2 years old and has 20 followers
-
-// const poly2 = new User({
-//   name: "Poly",
-//   age: 3,
-//   followers: 17,
-// });
-const poly2 = new User("Poly", 3, 17);
+// 2 variant
+const poly2 = new User({
+  name: "Poly",
+  age: 3,
+  followers: 17,
+});
+// const poly2 = new User("Poly", 3, 17);
 poly2.getInfo(); // User Poly is 3 years old and has 17 followers
 // Завдання 3
 // Напиши клас Storage, який буде створювати об'єкти для управління складом товарів. При виклику буде отримувати один аргумент - початковий масив товарів, і записувати його у властивість items.
 class Storage {
   constructor(items) {
-    this._items = items;
+    this.items = items;
   }
   getItems() {
-    return this._items;
+    return this.items;
   }
-  addItem(item) {
-    this._items.push(item);
+  addItem(itemAdd) {
+    this.items.push(itemAdd);
   }
-  removeItem(item) {
-    //   дивний запис
-    this._items = this._items.filter((itemOfOne) => itemOfOne !== item);
+  removeItem(itemToDelete) {
+    const indexToDelete = this.items.indexOf(itemToDelete);
+    if (indexToDelete > -1) {
+      this.items.splice(indexToDelete, 1);
+    }
   }
 }
 // Додай методи класу:
