@@ -198,7 +198,7 @@ class Car {
   //   this.price = newPrice;
   // }
   set price(newPrice) {
-    this._price = newPrice;
+    return (this._price = newPrice);
   }
   /*
    * Додай код для того, щоб завести автомобіль
