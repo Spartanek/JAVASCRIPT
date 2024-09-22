@@ -121,13 +121,13 @@ class StringBuilder {
     return this._value;
   }
   append(str) {
-    this._value += str;
+    return (this._value += str);
   }
   prepend(str) {
-    this._value = str + this._value;
+    return (this._value = str + this._value);
   }
   pad(str) {
-    this._value = str + this._value + str;
+    return (this._value = str + this._value + str);
   }
 }
 // Додай класу наступний функціонал:
@@ -155,7 +155,11 @@ class Car {
    * який приймає об'єкт-машину як параметр і виводить
    * в консоль значення властивостей maxSpeed, speed, isOn, distance и price.
    */
-
+  static getSpecs(car) {
+    console.log(
+      `maxSpeed: ${car.maxSpeed}, speed: ${car.speed}, isOn: ${car.isOn}, distance: ${car.distance}, price: ${car.price}`
+    );
+  }
   /*
    * Конструктор отримує об'єкт налаштувань.
    *
@@ -166,44 +170,84 @@ class Car {
    *  isOn - заведений автомобіль, значення true або false. Спочатку false
    *  distance - загальний кілометраж, спочатку 0
    */
-  constructor() {}
-
+  // constructor(speed = 0, price, maxSpeed, isOn, distance) {
+  //   this.speed = speed;
+  //   this.price = price;
+  //   this.maxSpeed = maxSpeed;
+  //   this.isOn = isOn;
+  //   this.distance = distance;
+  // }
+  // Конструктор: Ви передаєте в конструктор окремі значення для властивостей (speed, price, maxSpeed, isOn, distance), але в самому завданні вказано, що конструктор повинен приймати об'єкт налаштувань. Тобто, об'єкт повинен виглядати так:
+  constructor({ maxSpeed, price }) {
+    this.speed = 0;
+    this._price = price;
+    this.maxSpeed = maxSpeed;
+    this.isOn = false;
+    this.distance = 0;
+  }
   /*
    * Додай геттер і сеттер для властивості price,
    * який буде працювати з властивістю ціни автомобіля.
    */
-
+  // index.js:193 Uncaught RangeError: Maximum call stack size exceeded Якщо не ставити нижнє підкреслення перед price, але чому
+  get price() {
+    return this._price;
+  }
+  // Сетер для price: Ви додали сетер з ім'ям newPrice, але це не відповідає завданню. Потрібно просто зробити сетер з ім'ям price. Правильна версія має виглядати так:
+  // set newPrice(newPrice) {
+  //   this.price = newPrice;
+  // }
+  set price(newPrice) {
+    this._price = newPrice;
+  }
   /*
    * Додай код для того, щоб завести автомобіль
    * Записує у властивість isOn значення true
    */
-  turnOn() {}
+  turnOn() {
+    this.isOn = true;
+  }
 
   /*
    * Додай код для того, щоб заглушити автомобіль
    * Записує у властивість isOn значення false,
    * і скидає поточну швидкість в 0
    */
-  turnOff() {}
+  turnOff() {
+    this.isOn = false;
+    this.speed = 0;
+  }
 
   /*
    * Додає до властивості speed отримане значення,
    * за умови, що результуюча швидкість
    * не більше, ніж значення властивості maxSpeed
    */
-  accelerate(value) {}
+  accelerate(value) {
+    if (this.speed + value <= this.maxSpeed) {
+      this.speed = this.speed + value;
+    }
+  }
 
   /*
    * Забирає від властивості speed отримане значення,
    * за умови, що результуюча швидкість не менше нуля
    */
-  decelerate(value) {}
+  decelerate(value) {
+    if (this.speed - value >= 0) {
+      this.speed = this.speed - value;
+    }
+  }
 
   /*
    * Додає в поле distance кілометраж (hours * speed),
    * але тільки в тому випадку, якщо машина заведена!
    */
-  drive(hours) {}
+  drive(hours) {
+    if (this.isOn === true) {
+      this.distance += this.speed * hours;
+    }
+  }
 }
 
 const mustang = new Car({ maxSpeed: 200, price: 2000 });
@@ -212,14 +256,14 @@ mustang.turnOn();
 mustang.accelerate(50);
 mustang.drive(2);
 
-// Car.getSpecs(mustang);
+Car.getSpecs(mustang);
 // maxSpeed: 200, speed: 50, isOn: true, distance: 100, price: 2000
 
 mustang.decelerate(20);
 mustang.drive(1);
 mustang.turnOff();
 
-// Car.getSpecs(mustang);
+Car.getSpecs(mustang);
 // maxSpeed: 200, speed: 0, isOn: false, distance: 130, price: 2000
 
 console.log(mustang.price); // 2000
