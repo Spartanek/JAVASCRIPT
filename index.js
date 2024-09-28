@@ -31,6 +31,27 @@ const ingredients = [
   "Приправи",
 ];
 // Напиши скрипт, який для кожного елемента масиву ingredients створить окремий li, після чого вставить всі li за одну операцію в список ul.ingredients. Для створення DOM-вузлів використовуй document.createElement().
+const ingradientUl = document.getElementById("ingredients");
+for (let i = 0; i < ingredients.length; i++) {
+  const element = ingredients[i];
+  const lishka = document.createElement("li");
+  lishka.textContent = element;
+  //   ingradientUl.append(lishka);
+}
+
+const ingridientsMap = ingredients.map((ingridient) => {
+  const lishka = document.createElement("li");
+  lishka.textContent = ingridient;
+  return lishka;
+});
+
+console.log(ingridientsMap);
+
+// метод append - він не може працювати з масивами
+// ... - rest,spread оператор
+ingradientUl.append(...ingridientsMap);
+// ingradientUl.append(li, li, li, li, li, li);
+
 // 1-й варіант, але він робить не за одну операцію
 // const ingradientUl = document.getElementById("ingredients");
 // for (let i = 0; i < ingredients.length; i++) {
