@@ -32,23 +32,13 @@ const ingredients = [
 ];
 // Напиши скрипт, який для кожного елемента масиву ingredients створить окремий li, після чого вставить всі li за одну операцію в список ul.ingredients. Для створення DOM-вузлів використовуй document.createElement().
 // 1-й варіант, але він робить не за одну операцію
-const ingradientUl = document.getElementById("ingredients");
-for (let i = 0; i < ingredients.length; i++) {
-  const element = ingredients[i];
-  const lishka = document.createElement("li");
-  lishka.textContent = element;
-  ingradientUl.append(lishka);
-}
-// // 2-й варіант (трохи дивний)
 // const ingradientUl = document.getElementById("ingredients");
-// // створив порожній рядок
-// let liItems = "";
 // for (let i = 0; i < ingredients.length; i++) {
 //   const element = ingredients[i];
-//   liItems = "<li>${element}</li>";
+//   const lishka = document.createElement("li");
+//   lishka.textContent = element;
+//   // ingradientUl.append(lishka);
 // }
-// // innerHTML треба ще проробити
-// ingradientUl.innerHTML = liItems; // Вставляємо всі li за одну операцію
 // 3 завдання
 // Напиши скрипт для створення галереї зображень по масиву даних.
 // Використовуй масив об'єктів images для створення тегів img вкладених в li. Для створення розмітки використовуй шаблонні рядки і insertAdjacentHTML().
