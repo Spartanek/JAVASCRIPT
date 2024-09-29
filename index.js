@@ -75,9 +75,11 @@ const images = [
   },
 ];
 const ulGallery = document.querySelector("#gallery");
-const mapGallery = images.map((image) => {
-  return `<li><img src="${image.url}" alt="${image.alt}" width="300"></li>`;
-});
+const mapGallery = images
+  .map((image) => {
+    return `<li><img src="${image.url}" alt="${image.alt}" width="300"></li>`;
+  })
+  .join("");
 ulGallery.insertAdjacentHTML("beforeend", mapGallery);
 // 4 завдання
 // Лічильник складається зі спана і кнопок, які повинні збільшувати і зменшувати значення лічильника на 1.
