@@ -23,3 +23,20 @@ dblclick — спрацьовує після двох кліків на одно
 
 
 contextmenu — спрацьовує при натисканні правої кнопки миші. Є й інші способи відкрити контекстне меню, напр. за допомогою спеціальної клавіші на клавіатурі, але це вже не зовсім подія миші.
+
+
+
+
+const createDivFunction = function () {
+  const element = document.createElement("div");
+  const randomColor = Math.floor(Math.random() * (max + 1));
+  element.style.backgroundColor = randomColor;
+  divForModifying.append(element);
+};
+const createBoxes = function (amount, callback) {
+  const numBoxes = Number(amount);
+  for (let i = 0; i < numBoxes; i++) {
+    const element = document.createElement("div");
+    element.textContent = `Box ${i + 1}`;
+    divForModifying.append(element);
+  }
