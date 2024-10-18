@@ -3,33 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/main.css" />
     <title>Document</title>
   </head>
   <body>
     <header>
-      <h3>Популярні інетрактивні ігри</h3>
+      <div class="unique-continer">
+        <svg>
+          <use></use>
+        </svg>
+        <nav>
+          <ul>
+            <li><a href="">Інтерактив</a></li>
+            <li><a href="">Наша команда</a></li>
+            <li><a href="">Контакти</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
-      <section class="">
+      <section class="leap-year-section">
         <div class="container">
-          <p class="text1">Перевір в який рік ти народився</p>
-          <div class="father-element">
-            <input type="number" class="input1" />
-            <button class="search-button">button</button>
+          <p class="leap-year-text">Перевір в який рік ти народився</p>
+          <div class="leap-year-father-element">
+            <input class="leap-year-number-input" type="number" />
+            <button class="leap-year-search-button">button</button>
           </div>
-          <p class="text-result"></p>
+          <p class="leap-year-text-result"></p>
         </div>
       </section>
-      <section></section>
-      <section></section>
-      <section></section>
-      <section></section>
-      <section></section>
-      <section></section>
-      <section></section>
+      <section class="guess-number-section">
+        <div class="container">
+          <p class="guess-number-text">Вгадай число, яке загадав комп’ютер</p>
+          <div class="guess-number-father-element">
+            <input class="guess-number-input" type="number" />
+            <button class="guess-number-search-button">button</button>
+          </div>
+          <p class="guess-number-text-result">Вгадай число</p>
+        </div>
+      </section>
+      <section class="rps-section"></section>
+      <section class="calculator-section"></section>
+      <section class="calculate-time-section"></section>
+      <section class="dino-section"></section>
+      <section class="football-section"></section>
+      <section class="numbers-section"></section>
+      <section class="slider-section"></section>
+      <section class="scientist-section"></section>
     </main>
     <footer></footer>
-    <script src="./index.js" type="module"></script>
+    <script src="./JS/index.js" type="module"></script>
   </body>
 </html>

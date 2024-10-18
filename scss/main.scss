@@ -1,0 +1,19 @@
+/* який порядок повинний бути */
+@import "./base/_reset.scss";
+@import "./base/_hidden_h2.scss";
+@import "./base/_variables.scss";
+@import "./base/_typography.scss";
+@import "./base/_container.scss";
+
+@import "./components/_header.scss";
+@import "./components/_leap-year-section.scss";
+@import "./components/_guess-year-section.scss";
+@import "./components/_rps-section.scss";
+@import "./components/_calculator-section.scss";
+@import "./components/_calculate-time-section.scss";
+@import "./components/_dino-section.scss";
+@import "./components/_football-section.scss";
+@import "./components/_numbers-section.scss";
+@import "./components/_slider-section.scss";
+@import "./components/_scientist-section.scss";
+@import "./components/_footer.scss";
