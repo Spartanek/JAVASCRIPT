@@ -4,12 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
+    <link rel="stylesheet" href="../css/index.css" />
   </head>
 
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <!-- <include src="посилання на необхідний файл"></include> -->
+    <include src="./partial/header.html"></include>
+    <!-- FIXME: чи треба main -->
+    <main>
+      <include src="./partial/leap-year-section.html"></include>
+      <include src="./partial/guess-number-section.html"></include>
+      <include src="./partial/rps-section.html"></include>
+      <include src="./partial/calculator-section.html"></include>
+      <include src="./partial/calculate-time-section.html"></include>
+      <include src="./partial/dino-section.html"></include>
+      <include src="./partial/football-section.html"></include>
+      <include src="./partial/numbers-section.html"></include>
+      <include src="./partial/slider-section.html"></include>
+      <include src="./partial/scientist-section.html"></include>
+    </main>
+    <include src="./partial/footer.html"></include>
+    <include src="./partial/modal.html"></include>
+    <script src="./JS/leap-year.js" type="module"></script>
+    <script src="./JS/guess-number.js" type="module"></script>
+    <script src="./JS/rps.js" type="module"></script>
+    <script src="./JS/calculator.js" type="module"></script>
+    <script src="./JS/calculate-time.js" type="module"></script>
+    <script src="./JS/dino.js" type="module"></script>
+    <script src="./JS/football.js" type="module"></script>
+    <script src="./JS/numbers.js" type="module"></script>
+    <script src="./JS/slider.js" type="module"></script>
+    <script src="./JS/scientist.js" type="module"></script>
   </body>
 </html>

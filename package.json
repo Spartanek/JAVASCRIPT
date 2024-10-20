@@ -1,15 +1,15 @@
 {
-  "name": "jslessons",
+  "name": "JAVASCRIPT",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://  нікнейм на гітхабі.github.io/назва вашого репо",
+  "homepage": "https://Spartanek.github.io/JAVASCRIPT",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /ваш репо/"
+    "build": "parcel build src/*.html --public-url /JAVASCRIPT/"
   },
   "repository": {
     "type": "git",
-    "url": "git+посилання на ваш репозиторій.git"
+    "url": "git+https://github.com/Spartanek/JAVASCRIPT.git"
   },
   "keywords": [],
   "author": "",
