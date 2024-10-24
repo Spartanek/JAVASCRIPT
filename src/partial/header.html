@@ -1,22 +1,31 @@
-<header>
-  <div class="unique-continer">
+<header class="header">
+  <div class="unique-continer flex-div">
     <a href="" class="logo-link">
-      <svg class="logo-svg">
-        <use></use>
-      </svg>
+      <img
+        class="logo-img"
+        srcset="
+          ../assets/img/1x/logo1x.webp 1x,
+          ../assets/img/2x/logo2x.webp 2x
+        "
+        alt=""
+      />
     </a>
-    <nav>
-      <ul>
-        <li>
-          <a class="linka" href=""><p>Інтерактив</p></a>
-        </li>
-        <li>
-          <a class="linka" href=""><p>Наша команда</p></a>
-        </li>
-        <li>
-          <a class="linka" href=""><p>Контакти</p></a>
-        </li>
-      </ul>
-    </nav>
+    <div class="div-nav">
+      <nav class="navigation">
+        <ul class="ul-link">
+          <li class="li-linka">
+            <a class="linka" href="#">Інтерактив</a>
+          </li>
+          <li class="li-linka">
+            <a class="linka" href="#">Наша команда</a>
+          </li>
+          <li class="li-linka">
+            <a class="linka" href="#">Контакти</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- TODO:ToggleSwitch -->
+    <button>Вітаємо, User!</button>
   </div>
 </header>
