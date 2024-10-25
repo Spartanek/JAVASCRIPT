@@ -1,5 +1,9 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+a {
+  text-decoration: none;
+}
+
 html,
 body,
 div,
@@ -138,6 +142,11 @@ table {
   border: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -173,8 +182,8 @@ table {
   margin: 0 auto;
 }
 
-.unique-continer {
-  width: 995px;
+.unique-container {
+  width: 1100px;
   padding-right: 20px;
   padding-left: 20px;
   margin: 0 auto;
@@ -183,7 +192,21 @@ table {
 .flex-div {
   display: flex;
   justify-content: center;
+  align-items: center;
   align-content: center;
+}
+
+.buttonForModal {
+  outline: none;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0%;
+  width: 94px;
+  height: 15px;
 }
 
 .header {
@@ -210,6 +233,60 @@ table {
 .div-nav {
   display: flex;
   align-items: center;
+  margin-right: 300px;
+}
+
+.linka {
+  color: rgb(0, 0, 0);
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.li-linka:not(:last-child) {
+  margin-right: 50px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
 }
 
 .operation-button {
