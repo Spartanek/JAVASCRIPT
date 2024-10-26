@@ -1,0 +1,52 @@
+.game-container {
+  width: 720px;
+  height: 240px;
+  margin: 20px auto;
+  background-color: #333;
+  border: 1px solid;
+  position: relative;
+  overflow: hidden;
+}
+.player {
+  width: 47px;
+  height: 44px;
+  border: 1px solid blue;
+  position: absolute;
+  left: 20%;
+  bottom: 0;
+  &.jump {
+    // animation: jump 1.5s infinite;
+  }
+}
+@keyframes jump {
+  0% {
+    bottom: 0px;
+  }
+  25% {
+    bottom: 60px;
+  }
+  30% {
+    bottom: 60px;
+  }
+  100% {
+    bottom: 0px;
+  }
+}
+.obstacle {
+  width: 17px;
+  height: 34px;
+  position: absolute;
+  bottom: 0;
+  left: 80%;
+  border: 1px solid red;
+  //   animation: moving 3s linear infinite;
+}
+// трохи незрозуміло тут
+@keyframes moving {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -1000px;
+  }
+}
