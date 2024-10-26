@@ -84,3 +84,62 @@ const scientists = [
     id: 12,
   },
 ];
+
+const buttonScientist1 = document
+  .getElementById('scientist-button-1')
+  .addEventListener('click', () =>
+    console.log(
+      scientists.filter(
+        scientist => scientist.born >= 1800 && scientist.born < 1900
+      )
+    )
+  );
+// localeCompare - створений для того, щоб перекладати на локальну мову
+
+const buttonScientist2 = document
+  .getElementById('scientist-button-2')
+  .addEventListener('click', () =>
+    console.log(scientists.sort((a, b) => a.name.localeCompare(b.name)))
+  );
+const buttonScientist3 = document
+  .getElementById('scientist-button-3')
+  .addEventListener('click', () =>
+    console.log(
+      scientists.sort((a, b) => {
+        const live1 = a.dead - a.born;
+        const live2 = b.dead - b.born;
+        return live2 - live1;
+      })
+    )
+  );
+const buttonScientist4 = document
+  .getElementById('scientist-button-4')
+  .addEventListener('click', () => {
+    const array = scientists.find(
+      scientist =>
+        scientist.born ===
+        Math.max(...scientists.map(scientist => scientist.born))
+    );
+    console.log(array);
+  });
+const buttonScientist5 = document
+  .getElementById('scientist-button-5')
+  .addEventListener('click', () =>
+    console.log(
+      scientists.find(
+        scientist =>
+          scientist.name === 'Albert' && scientist.surname === 'Einstein'
+      ).born
+    )
+  );
+const buttonScientist6 = document
+  .getElementById('scientist-button-6')
+  .addEventListener('click', () => {
+    console.log(
+      scientists.filter(scientist => scientist.surname.startsWith('C'))
+    );
+  });
+const buttonScientist7 = document.getElementById('scientist-button-7');
+const buttonScientist8 = document.getElementById('scientist-button-8');
+const buttonScientist9 = document.getElementById('scientist-button-9');
+console.log();

@@ -357,28 +357,13 @@ a {
     left: -1000px;
   }
 }
-.scientist-div {
-  width: 100px;
-  height: 100px;
-  border-radius: 20px;
-  background: rgb(217, 217, 217);
-}
-
 .scientist-ul {
   display: flex;
   flex-wrap: wrap; /* Allows the list items to wrap if necessary */
   justify-content: space-between; /* Distributes space between items */
 }
 
-.parent-div-scientist {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 60px;
-  grid-row-gap: 40px;
-}
-
-.scientist-li-div {
+.scientist-li-button {
   border-radius: 20px;
   box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
   background: rgb(0, 0, 0);
