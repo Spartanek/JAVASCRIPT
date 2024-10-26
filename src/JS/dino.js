@@ -13,30 +13,30 @@ function AddJumpListener() {
 }
 let totalScore = 0;
 // Колізія, хітбокси
-function monitorCollision() {
-  setInterval(() => {
-    if (isCollision()) {
-      alert('You died');
-    }
-  }, 10);
-}
+// function monitorCollision() {
+//   setInterval(() => {
+//     if (isCollision()) {
+//       alert('You died');
+//     }
+//   }, 10);
+// }
 
-function isCollision() {
-  const playerClientRect = playerElement.getBoundingClientRect();
-  const playerL = playerClientRect.left;
-  const playerR = playerClientRect.right;
-  const playerB = playerClientRect.bottom;
+// function isCollision() {
+//   const playerClientRect = playerElement.getBoundingClientRect();
+//   const playerL = playerClientRect.left;
+//   const playerR = playerClientRect.right;
+//   const playerB = playerClientRect.bottom;
 
-  const obstacleClientRect = obstacleElement.getBoundingClientRect();
-  const obstacleL = obstacleClientRect.left;
-  const obstacleR = obstacleClientRect.right;
-  const obstacleT = obstacleClientRect.top;
+//   const obstacleClientRect = obstacleElement.getBoundingClientRect();
+//   const obstacleL = obstacleClientRect.left;
+//   const obstacleR = obstacleClientRect.right;
+//   const obstacleT = obstacleClientRect.top;
 
-  const xCollision = obstacleR > playerL && obstacleL < playerR;
-  const yCollision = playerB > obstacleT;
+//   const xCollision = obstacleR > playerL && obstacleL < playerR;
+//   const yCollision = playerB > obstacleT;
 
-  return xCollision && yCollision;
-}
+//   return xCollision && yCollision;
+// }
 function jumpFunction() {
   if (jumping) {
     return;
@@ -50,14 +50,14 @@ function jumpFunction() {
 }
 function getScore() {
   setInterval(() => {
-    totalScore++;
-    resultText.textContent = `Ви пройшли дистанцію у ${totalScore}`;
+    totalScore = totalScore + 1;
+    resultText.textContent = `Ви пройшли дистанцію у ${totalScore} метрів.`;
   }, 100);
 }
 // gameField.addEventListener('click', jumpFunction);
 function main() {
   AddJumpListener();
-  monitorCollision();
+  // monitorCollision();
   getScore();
 }
 // буде викликатися постійно

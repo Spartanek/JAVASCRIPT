@@ -321,6 +321,10 @@ a {
   left: 20%;
   bottom: 0;
 }
+.player.jump {
+  animation: jump 1.5s infinite;
+}
+
 @keyframes jump {
   0% {
     bottom: 0px;
@@ -342,6 +346,7 @@ a {
   bottom: 0;
   left: 80%;
   border: 1px solid red;
+  animation: moving 3s linear infinite;
 }
 
 @keyframes moving {
@@ -363,6 +368,14 @@ a {
   display: flex;
   flex-wrap: wrap; /* Allows the list items to wrap if necessary */
   justify-content: space-between; /* Distributes space between items */
+}
+
+.parent-div-scientist {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 60px;
+  grid-row-gap: 40px;
 }
 
 .scientist-li-div {
