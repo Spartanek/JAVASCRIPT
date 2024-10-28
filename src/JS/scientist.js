@@ -132,6 +132,7 @@ const buttonScientist5 = document
       ).born
     )
   );
+// чогось тут працює без return
 const buttonScientist6 = document
   .getElementById('scientist-button-6')
   .addEventListener('click', () => {
@@ -139,7 +140,61 @@ const buttonScientist6 = document
       scientists.filter(scientist => scientist.surname.startsWith('C'))
     );
   });
-const buttonScientist7 = document.getElementById('scientist-button-7');
-const buttonScientist8 = document.getElementById('scientist-button-8');
-const buttonScientist9 = document.getElementById('scientist-button-9');
+// чогось тут працює навпаки
+const buttonScientist7 = document
+  .getElementById('scientist-button-7')
+  .addEventListener('click', () => {
+    return console.log(
+      scientists.filter(scientist => !scientist.name.startsWith('A'))
+    );
+  });
+// Знайти вченого, який прожив найдовше і вченого, який прожив найменше
+const buttonScientist8 = document
+  .getElementById('scientist-button-8')
+  // reduce() - зменшує елементи масиву до єдиного значення
+  .addEventListener('click', () => {
+    scientists.forEach(
+      scientist => (scientist.age = scientist.dead - scientist.born)
+    );
+
+    const maximumAge = scientists.reduce(maxAge);
+    const minimumAge = scientists.reduce(minAge);
+    console.log(maximumAge);
+    console.log(minimumAge);
+    function maxAge(previousScientist, nextScientist) {
+      // previousScientist.age < nextScientist.age ? previousScientist.age : nextScientist.age
+      if (previousScientist.age > nextScientist.age) {
+        return previousScientist;
+      } else {
+        return nextScientist;
+      }
+      // return previousScientist.age > nextScientist.age
+      //   ? previousScientist
+      //   : nextScientist;
+    }
+    function minAge(previousScientist, nextScientist) {
+      if (previousScientist.age < nextScientist.age) {
+        // age тут не треба дописувати
+        return previousScientist;
+      } else {
+        return nextScientist;
+      }
+      // return previousScientist.age < nextScientist.age
+      //   ? previousScientist
+      //   : nextScientist;
+    }
+  });
+// Знайти вчених, в яких співпадають перші літери імені і прізвища
+const buttonScientist9 = document
+  .getElementById('scientist-button-9')
+  .addEventListener('click', () => {
+    return console.log(
+      scientists
+        .map(scientist => scientist)
+        .filter(
+          // The JavaScript String charAt() method retrieves the character at a specified index in a string. The index is passed as an argument to the method, and it returns the character at that position. Note: JavaScript uses zero-based indexing, meaning the first character is at index 0, the second at index 1, and so on.
+          scientist => scientist.name.charAt(0) === scientist.surname.charAt(0)
+        )
+    );
+  });
 console.log();
