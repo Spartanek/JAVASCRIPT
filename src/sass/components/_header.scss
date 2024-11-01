@@ -18,7 +18,7 @@
 .div-nav {
   display: flex;
   align-items: center;
-  margin-right: 300px;
+  margin-right: 360px;
 }
 .linka {
   color: rgb(0, 0, 0);
@@ -71,3 +71,9 @@
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+// dppx - кількість фізичних пікселів у одному css пікселі
+// dpi - кількість фізичних пікселів на дюйм екрану
+// .vlass {
+//   background-image: ...;
+//   @media ...
+// }
