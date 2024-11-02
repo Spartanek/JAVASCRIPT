@@ -305,8 +305,6 @@ a {
 }
 
 .football-field {
-  display: flex;
-  align-items: center;
   box-sizing: border-box;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 37px;
@@ -319,21 +317,13 @@ a {
   cursor: none;
 }
 
-.mouse-svg {
-  width: 30px;
-  height: 40px;
-  position: absolute;
-  pointer-events: none;
-  z-index: 1000;
-  left: 0px;
-  top: 0px;
-  transform: translate(-50%, -50%); /* Centers the cursor SVG at the mouse location */
-}
-
 .ball-svg {
-  margin-left: 90px;
+  top: 0;
+  left: 0;
+  position: absolute;
   width: 60px;
   height: 60px;
+  transition: top 700ms ease-out, left 700ms ease-in;
 }
 
 .scientist-li-button {
