@@ -84,74 +84,106 @@ const scientists = [
     id: 12,
   },
 ];
-
+// повертає масив
+const allDiv = document.querySelectorAll('.div-scientist');
+allDiv.forEach(div => (div.style.display = 'none'));
+const div1 = document.querySelector('.scientistDescription1');
+const div2 = document.querySelector('.scientistDescription2');
+const div3 = document.querySelector('.scientistDescription3');
+const div4 = document.querySelector('.scientistDescription4');
+const div5 = document.querySelector('.scientistDescription5');
+const div6 = document.querySelector('.scientistDescription6');
+const div7 = document.querySelector('.scientistDescription7');
+const div8 = document.querySelector('.scientistDescription8');
+const div9 = document.querySelector('.scientistDescription9');
+const div10 = document.querySelector('.scientistDescription10');
+const div11 = document.querySelector('.scientistDescription11');
+const div12 = document.querySelector('.scientistDescription12');
 const buttonScientist1 = document
   .getElementById('scientist-button-1')
-  .addEventListener('click', () =>
-    console.log(
-      scientists.filter(
-        scientist => scientist.born >= 1800 && scientist.born < 1900
-      )
-    )
-  );
+  .addEventListener('click', () => {
+    // Фільтруємо вчених за умовою
+    const matchingScientists = scientists.filter(
+      scientist => scientist.born >= 1800 && scientist.born < 1900
+    );
+
+    // Відображаємо лише ті div, які відповідають фільтру
+    matchingScientists.forEach(scientist => {
+      const scientistDiv = document.querySelector(
+        `.scientistDescription${scientist.id}`
+      );
+      if (scientistDiv) {
+        scientistDiv.style.display = 'block';
+      }
+    });
+  });
 // localeCompare - створений для того, щоб перекладати на локальну мову
 
 const buttonScientist2 = document
   .getElementById('scientist-button-2')
-  .addEventListener('click', () =>
-    console.log(scientists.sort((a, b) => a.name.localeCompare(b.name)))
-  );
+  .addEventListener('click', () => {
+    const matchingScientists = scientists.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+    console.log(matchingScientists);
+  });
+
 const buttonScientist3 = document
   .getElementById('scientist-button-3')
-  .addEventListener('click', () =>
-    console.log(
-      scientists.sort((a, b) => {
-        const live1 = a.dead - a.born;
-        const live2 = b.dead - b.born;
-        return live2 - live1;
-      })
-    )
-  );
+  .addEventListener('click', () => {
+    const matchingScientists = scientists.sort((a, b) => {
+      const live1 = a.dead - a.born;
+      const live2 = b.dead - b.born;
+      return live2 - live1;
+    });
+    console.log(matchingScientists);
+  });
+
 const buttonScientist4 = document
   .getElementById('scientist-button-4')
   .addEventListener('click', () => {
-    const array = scientists.find(
-      scientist =>
-        scientist.born ===
-        Math.max(...scientists.map(scientist => scientist.born))
+    const youngestScientist = scientists.find(
+      scientist => scientist.born === Math.max(...scientists.map(sc => sc.born))
     );
-    console.log(array);
   });
+
 const buttonScientist5 = document
   .getElementById('scientist-button-5')
-  .addEventListener('click', () =>
-    console.log(
-      scientists.find(
-        scientist =>
-          scientist.name === 'Albert' && scientist.surname === 'Einstein'
-      ).born
-    )
-  );
-// чогось тут працює без return
+  .addEventListener('click', () => {
+    const einstein = scientists.find(
+      scientist =>
+        scientist.name === 'Albert' && scientist.surname === 'Einstein'
+    );
+    console.log(einstein.born);
+  });
+
 const buttonScientist6 = document
   .getElementById('scientist-button-6')
   .addEventListener('click', () => {
-    console.log(
-      scientists.filter(scientist => scientist.surname.startsWith('C'))
+    const scientistsWithC = scientists.filter(scientist =>
+      scientist.surname.startsWith('C')
     );
+    scientistsWithC.forEach(scientist => {
+      const scientistDiv = document.querySelector(
+        `.scientistDescription${scientist.id}`
+      );
+      if (scientistDiv) {
+        scientistDiv.style.display = 'block';
+      }
+    });
   });
-// чогось тут працює навпаки
+
 const buttonScientist7 = document
   .getElementById('scientist-button-7')
   .addEventListener('click', () => {
-    return console.log(
-      scientists.filter(scientist => !scientist.name.startsWith('A'))
+    const scientistsWithoutA = scientists.filter(
+      scientist => !scientist.name.startsWith('A')
     );
+    console.log(scientistsWithoutA);
   });
-// Знайти вченого, який прожив найдовше і вченого, який прожив найменше
+
 const buttonScientist8 = document
   .getElementById('scientist-button-8')
-  // reduce() - зменшує елементи масиву до єдиного значення
   .addEventListener('click', () => {
     scientists.forEach(
       scientist => (scientist.age = scientist.dead - scientist.born)
@@ -159,42 +191,30 @@ const buttonScientist8 = document
 
     const maximumAge = scientists.reduce(maxAge);
     const minimumAge = scientists.reduce(minAge);
-    console.log(maximumAge);
-    console.log(minimumAge);
-    function maxAge(previousScientist, nextScientist) {
-      // previousScientist.age < nextScientist.age ? previousScientist.age : nextScientist.age
-      if (previousScientist.age > nextScientist.age) {
-        return previousScientist;
-      } else {
-        return nextScientist;
-      }
-      // return previousScientist.age > nextScientist.age
-      //   ? previousScientist
-      //   : nextScientist;
+    console.log('Longest-lived scientist:', maximumAge);
+    console.log('Shortest-lived scientist:', minimumAge);
+
+    function maxAge(prev, next) {
+      return prev.age > next.age ? prev : next;
     }
-    function minAge(previousScientist, nextScientist) {
-      if (previousScientist.age < nextScientist.age) {
-        // age тут не треба дописувати
-        return previousScientist;
-      } else {
-        return nextScientist;
-      }
-      // return previousScientist.age < nextScientist.age
-      //   ? previousScientist
-      //   : nextScientist;
+
+    function minAge(prev, next) {
+      return prev.age < next.age ? prev : next;
     }
   });
-// Знайти вчених, в яких співпадають перші літери імені і прізвища
+
 const buttonScientist9 = document
   .getElementById('scientist-button-9')
   .addEventListener('click', () => {
-    return console.log(
-      scientists
-        .map(scientist => scientist)
-        .filter(
-          // The JavaScript String charAt() method retrieves the character at a specified index in a string. The index is passed as an argument to the method, and it returns the character at that position. Note: JavaScript uses zero-based indexing, meaning the first character is at index 0, the second at index 1, and so on.
-          scientist => scientist.name.charAt(0) === scientist.surname.charAt(0)
-        )
+    const matchingScientists = scientists.filter(
+      scientist => scientist.name.charAt(0) === scientist.surname.charAt(0)
     );
+    matchingScientists.forEach(scientist => {
+      const scientistDiv = document.querySelector(
+        `.scientistDescription${scientist.id}`
+      );
+      if (scientistDiv) {
+        scientistDiv.style.display = 'block';
+      }
+    });
   });
-console.log();
